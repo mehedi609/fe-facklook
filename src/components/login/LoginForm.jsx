@@ -5,10 +5,7 @@ import LoginInput from '../inputs/loginInput';
 import * as Yup from 'yup';
 
 const LoginSchema = Yup.object().shape({
-  password: Yup.string()
-    .min(6, 'Password must be at least 6 characters')
-    .max(60, 'Password must be at most 60 characters')
-    .required('Password is required'),
+  password: Yup.string().required('Password is required'),
   email: Yup.string()
     .email('Must be a valid email')
     .required('Email is required'),
