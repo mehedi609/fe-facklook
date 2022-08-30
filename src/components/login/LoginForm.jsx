@@ -4,11 +4,6 @@ import { Link } from 'react-router-dom';
 import LoginInput from '../inputs/loginInput';
 import * as Yup from 'yup';
 
-const loginInfos = {
-  email: '',
-  password: '',
-};
-
 const LoginSchema = Yup.object().shape({
   password: Yup.string()
     .min(6, 'Password must be at least 6 characters')
@@ -20,6 +15,11 @@ const LoginSchema = Yup.object().shape({
 });
 
 export default function LoginForm({ setVisible }) {
+  const loginInfos = {
+    email: '',
+    password: '',
+  };
+
   const [login, setLogin] = useState(loginInfos);
   const { email, password } = login;
 
