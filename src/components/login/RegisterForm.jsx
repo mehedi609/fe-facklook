@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import RegisterInput from '../inputs/registerInput/RegisterInput';
+import RegisterInput from '../inputs/registerInput';
 
 export default function RegisterForm() {
   const userInfos = {
@@ -17,16 +17,8 @@ export default function RegisterForm() {
 
   const [user, setUser] = useState(userInfos);
 
-  const {
-    first_name,
-    last_name,
-    email,
-    password,
-    bYear,
-    bMonth,
-    bDay,
-    gender,
-  } = user;
+  const { firstName, lastName, email, password, bYear, bMonth, bDay, gender } =
+    user;
 
   const handleRegisterChange = (e) => {
     const { name, value } = e.target;
@@ -78,8 +70,8 @@ export default function RegisterForm() {
         <Formik
           enableReinitialize
           initialValues={{
-            first_name,
-            last_name,
+            firstName,
+            lastName,
             email,
             password,
             bYear,
