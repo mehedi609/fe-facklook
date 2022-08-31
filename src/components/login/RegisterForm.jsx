@@ -1,10 +1,16 @@
 import { useState } from 'react';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
+import { MoonLoader } from 'react-spinners';
+import { useDispatch, useSelector } from 'react-redux';
+
 import RegisterInput from '../inputs/registerInput';
 import DateOfBirthSelect from './DateOfBirthSelect';
 import GenderSelect from './GenderSelect';
-import { login } from '../../reducers/userSlice';
+import { signUp } from '../../reducers/authSlice';
+import { STATUS } from '../../utils';
 
 export default function RegisterForm() {
   const userInfos = {
@@ -21,6 +27,9 @@ export default function RegisterForm() {
   const [user, setUser] = useState(userInfos);
   const [dateError, setDateError] = useState('');
   const [genderError, setGenderError] = useState('');
+  const dispatch = useDispatch();
+  const { auth } = useSelector((state) => state);
+  const navigate = useNavigate();
 
   const { firstName, lastName, email, password, bYear, bMonth, bDay, gender } =
     user;
@@ -86,7 +95,6 @@ export default function RegisterForm() {
           }}
           validationSchema={registerValidationSchema}
           onSubmit={() => {
-            console.log('SET ERORO');
             let current_date = new Date();
             let picked_date = new Date(bYear, bMonth - 1, bDay);
             let atleast14 = new Date(1970 + 14, 0, 1);
@@ -107,6 +115,13 @@ export default function RegisterForm() {
             } else {
               setDateError('');
               setGenderError('');
+              dispatch(signUp(user))
+                .unwrap()
+                .then((registeredUser) => {
+                  const { msg, ...rest } = registeredUser;
+                  Cookies.set('user', JSON.stringify(rest));
+                  navigate('/');
+                });
             }
           }}
         >
@@ -186,6 +201,18 @@ export default function RegisterForm() {
                   Sign Up
                 </button>
               </div>
+
+              <MoonLoader
+                loading={auth.status === STATUS.loading}
+                color="#1876f2"
+                size={30}
+              />
+              {auth.status === STATUS.failure && (
+                <div className="error_text">{auth.message}</div>
+              )}
+              {auth.status === STATUS.success && (
+                <div className="success_text">{auth.message}</div>
+              )}
             </Form>
           )}
         </Formik>
