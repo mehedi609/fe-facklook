@@ -12,7 +12,7 @@ import GenderSelect from './GenderSelect';
 import { signUp } from '../../reducers/authSlice';
 import { STATUS } from '../../utils';
 
-export default function RegisterForm() {
+export default function RegisterForm({ setVisible }) {
   const userInfos = {
     firstName: '',
     lastName: '',
@@ -31,8 +31,7 @@ export default function RegisterForm() {
   const { auth } = useSelector((state) => state);
   const navigate = useNavigate();
 
-  const { firstName, lastName, email, password, bYear, bMonth, bDay, gender } =
-    user;
+  const { bYear, bMonth, bDay, gender } = user;
 
   const handleRegisterChange = (e) => {
     const { name, value } = e.target;
@@ -77,21 +76,14 @@ export default function RegisterForm() {
     <div className="blur">
       <div className="register">
         <div className="register_header">
-          <i className="exit_icon"></i>
+          <i className="exit_icon" onClick={() => setVisible(false)}></i>
           <span>Sign Up</span>
           <span>it's quick and easy</span>
         </div>
         <Formik
           enableReinitialize
           initialValues={{
-            firstName,
-            lastName,
-            email,
-            password,
-            bYear,
-            bMonth,
-            bDay,
-            gender,
+            ...user,
           }}
           validationSchema={registerValidationSchema}
           onSubmit={() => {

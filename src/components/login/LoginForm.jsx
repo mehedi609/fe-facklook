@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
-import { Link } from 'react-router-dom';
-import LoginInput from '../inputs/loginInput';
+import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import Cookies from 'js-cookie';
+import { MoonLoader } from 'react-spinners';
+import { useDispatch, useSelector } from 'react-redux';
+
+import LoginInput from '../inputs/loginInput';
+import { signIn } from '../../reducers/authSlice';
+import { STATUS } from '../../utils';
 
 const LoginSchema = Yup.object().shape({
   password: Yup.string().required('Password is required'),
@@ -18,7 +24,9 @@ export default function LoginForm({ setVisible }) {
   };
 
   const [login, setLogin] = useState(loginInfos);
-  const { email, password } = login;
+  const dispatch = useDispatch();
+  const { auth } = useSelector((state) => state);
+  const navigate = useNavigate();
 
   const handleLoginChange = (e) => {
     const { name, value } = e.target;
@@ -37,8 +45,16 @@ export default function LoginForm({ setVisible }) {
         <div className="login_2_wrap">
           <Formik
             enableReinitialize
-            initialValues={{ email, password }}
+            initialValues={{ ...login }}
             validationSchema={LoginSchema}
+            onSubmit={() => {
+              dispatch(signIn(login))
+                .unwrap()
+                .then((loggedInUser) => {
+                  Cookies.set('user', JSON.stringify(loggedInUser));
+                  navigate('/');
+                });
+            }}
           >
             {(formik) => (
               <Form>
@@ -64,8 +80,24 @@ export default function LoginForm({ setVisible }) {
           <Link to="/forgot" className="forgot_password">
             Forgotten password?
           </Link>
+
+          <MoonLoader
+            loading={auth.status === STATUS.loading}
+            color="#1876f2"
+            size={30}
+          />
+
+          {auth.status === STATUS.failure && (
+            <div className="error_text">{auth.message}</div>
+          )}
+
           <div className="sign_splitter"></div>
-          <button className="blue_btn open_signup">Create Account</button>
+          <button
+            className="blue_btn open_signup"
+            onClick={() => setVisible(true)}
+          >
+            Create Account
+          </button>
         </div>
         <Link to="/" className="sign_extra">
           <b>Create a Page </b>
