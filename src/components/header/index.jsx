@@ -2,6 +2,9 @@ import { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SearchMenu from './SearchMenu';
+import AllMenu from './AllMenu';
+import { useClickUserSide } from '../../utils/clickOutside';
+import UserMenu from './userMenu';
 import {
   ArrowDown,
   Friends,
@@ -17,16 +20,17 @@ import {
 } from '../../svg';
 
 import './header.css';
-import AllMenu from './AllMenu';
-import { useClickUserSide } from '../../utils/clickOutside';
 
 export default function Header() {
   const { loggedInUser: user } = useSelector((state) => state.auth);
   const [showSearchMenu, setShowSearchMenu] = useState(false);
   const [showAllMenu, setShowAllMenu] = useState(false);
+  const [showUserMenu, setShowUserMenu] = useState(false);
   const allMenuRef = useRef(null);
+  const userMenuRef = useRef(null);
 
   useClickUserSide(allMenuRef, () => setShowAllMenu(false));
+  useClickUserSide(userMenuRef, () => setShowUserMenu(false));
 
   const color = '#65676b';
 
@@ -93,8 +97,12 @@ export default function Header() {
           <Notifications />
           <div className="right_notification">5</div>
         </div>
-        <div className="circle_icon hover1">
-          <ArrowDown />
+        <div className="circle_icon hover1" ref={userMenuRef}>
+          <div onClick={() => setShowUserMenu((prevState) => !prevState)}>
+            <ArrowDown />
+          </div>
+
+          {showUserMenu && <UserMenu user={user} />}
         </div>
       </div>
     </header>

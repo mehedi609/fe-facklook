@@ -16,5 +16,5 @@ export const useClickUserSide = (ref, callback) => {
       document.removeEventListener('mousedown', listener);
       document.removeEventListener('touchstart', listener);
     };
-  }, [ref]);
+  }, [ref, callback]);
 };
