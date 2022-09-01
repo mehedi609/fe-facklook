@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Return, Search } from '../../svg';
 import { useClickUserSide } from '../../utils/clickOutside';
-import AllMenu from './AllMenu';
 
 const SearchMenu = ({ color, setShowSearchMenu }) => {
   const [iconVisible, setIconVisible] = useState(true);
@@ -43,7 +42,7 @@ const SearchMenu = ({ color, setShowSearchMenu }) => {
 
       <div className="search_history_header">
         <span>Recent searches</span>
-        <a>Edit</a>
+        <a href="/">Edit</a>
       </div>
 
       <div className="search_history"></div>
