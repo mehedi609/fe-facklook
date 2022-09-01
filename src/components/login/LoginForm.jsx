@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import LoginInput from '../inputs/loginInput';
 import { signIn } from '../../reducers/authSlice';
-import { STATUS } from '../../utils';
+import { STATUS } from '../../utils/requestStatus';
 
 const LoginSchema = Yup.object().shape({
   password: Yup.string().required('Password is required'),

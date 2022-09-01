@@ -10,7 +10,7 @@ import RegisterInput from '../inputs/registerInput';
 import DateOfBirthSelect from './DateOfBirthSelect';
 import GenderSelect from './GenderSelect';
 import { signUp } from '../../reducers/authSlice';
-import { STATUS } from '../../utils';
+import { STATUS } from '../../utils/requestStatus';
 
 export default function RegisterForm({ setVisible }) {
   const userInfos = {
