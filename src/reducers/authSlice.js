@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 import { STATUS } from '../utils';
 
 export const signUp = createAsyncThunk(
@@ -37,7 +38,7 @@ export const authSlicer = createSlice({
   initialState: {
     status: '',
     message: '',
-    loggedInUser: null,
+    loggedInUser: Cookies.get('user') ? JSON.parse(Cookies.get('user')) : null,
   },
   reducers: {},
   extraReducers: (builder) => {
