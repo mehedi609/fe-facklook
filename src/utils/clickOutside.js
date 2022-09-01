@@ -3,9 +3,10 @@ import { useEffect } from 'react';
 export const useClickUserSide = (ref, callback) => {
   useEffect(() => {
     const listener = (e) => {
-      if (ref.current || !ref.current.contains(e.target)) {
-        callback();
+      if (!ref.current || ref.current.contains(e.target)) {
+        return;
       }
+      callback();
     };
 
     document.addEventListener('mousedown', listener);
