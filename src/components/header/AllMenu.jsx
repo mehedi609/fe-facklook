@@ -25,9 +25,9 @@ const AllMenu = () => {
 
           <div className="all_menu_group">
             <div className="all_menu_group_header">Social</div>
-            {socialMenus.map((item, i) => (
+            {socialMenus.map((item) => (
               <AllMenuItem
-                key={i}
+                key={item.id}
                 name={item.name}
                 description={item.description}
                 icon={item.icon}
@@ -37,9 +37,9 @@ const AllMenu = () => {
 
           <div className="all_menu_group">
             <div className="all_menu_group_header">Entertainment</div>
-            {entertainmentMenus.map((item, i) => (
+            {entertainmentMenus.map((item) => (
               <AllMenuItem
-                key={i}
+                key={item.id}
                 name={item.name}
                 description={item.description}
                 icon={item.icon}
@@ -49,9 +49,9 @@ const AllMenu = () => {
 
           <div className="all_menu_group">
             <div className="all_menu_group_header">Shopping</div>
-            {shoppingMenus.map((item, i) => (
+            {shoppingMenus.map((item) => (
               <AllMenuItem
-                key={i}
+                key={item.id}
                 name={item.name}
                 description={item.description}
                 icon={item.icon}
@@ -61,9 +61,9 @@ const AllMenu = () => {
 
           <div className="all_menu_group">
             <div className="all_menu_group_header">Personal</div>
-            {personalMenus.map((item, i) => (
+            {personalMenus.map((item) => (
               <AllMenuItem
-                key={i}
+                key={item.id}
                 name={item.name}
                 description={item.description}
                 icon={item.icon}
@@ -73,9 +73,9 @@ const AllMenu = () => {
 
           <div className="all_menu_group">
             <div className="all_menu_group_header">Professional</div>
-            {professionsalMenus.map((item, i) => (
+            {professionsalMenus.map((item) => (
               <AllMenuItem
-                key={i}
+                key={item.id}
                 name={item.name}
                 description={item.description}
                 icon={item.icon}
@@ -85,9 +85,9 @@ const AllMenu = () => {
 
           <div className="all_menu_group">
             <div className="all_menu_group_header">Community Resources</div>
-            {communityMenus.map((item, i) => (
+            {communityMenus.map((item) => (
               <AllMenuItem
-                key={i}
+                key={item.id}
                 name={item.name}
                 description={item.description}
                 icon={item.icon}
@@ -97,9 +97,9 @@ const AllMenu = () => {
 
           <div className="all_menu_group">
             <div className="all_menu_group_header">More from Meta</div>
-            {metaMenus.map((item, i) => (
+            {metaMenus.map((item) => (
               <AllMenuItem
-                key={i}
+                key={item.id}
                 name={item.name}
                 description={item.description}
                 icon={item.icon}
@@ -110,8 +110,8 @@ const AllMenu = () => {
 
         <div className="all_right">
           <div className="all_right_header">Create</div>
-          {createMenus.map((item, i) => (
-            <div className="all_right_item hover1" key={i}>
+          {createMenus.map((item) => (
+            <div className="all_right_item hover1" key={item.id}>
               <div className="all_right_circle">
                 <i className={item.icon}></i>
               </div>

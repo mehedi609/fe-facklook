@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-import './left-home.css';
 import { left } from '../../../utils/allMenuData';
 import LeftLink from './LeftLink';
 import { ArrowDown1 } from '../../../svg';
 import Shortcut from './Shortcut';
+
+import './left-home.css';
 
 const LeftHome = ({ user }) => {
   const [visible, setVisible] = useState(false);
@@ -19,9 +19,9 @@ const LeftHome = ({ user }) => {
         </span>
       </Link>
 
-      {left.slice(0, 8).map((menu, i) => (
+      {left.slice(0, 8).map((menu) => (
         <LeftLink
-          key={i}
+          key={menu.id}
           img={menu.img}
           notification={menu.notification}
           text={menu.text}
@@ -44,9 +44,9 @@ const LeftHome = ({ user }) => {
 
       {visible && (
         <div className="more_left">
-          {left.slice(8, left.length).map((link, i) => (
+          {left.slice(8, left.length).map((link) => (
             <LeftLink
-              key={i}
+              key={link.id}
               img={link.img}
               text={link.text}
               notification={link.notification}

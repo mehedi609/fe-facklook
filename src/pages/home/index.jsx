@@ -2,6 +2,9 @@ import Header from '../../components/header';
 import { useSelector } from 'react-redux';
 import LeftHome from '../../components/home/left';
 import RightHome from '../../components/home/right';
+import Stories from '../../components/home/stories';
+
+import './home.css';
 
 export default function Home() {
   const {
@@ -9,9 +12,14 @@ export default function Home() {
   } = useSelector((state) => state);
 
   return (
-    <div>
+    <div className="home">
       <Header />
       <LeftHome user={user} />
+
+      <div className="home_middle">
+        <Stories />
+      </div>
+
       <RightHome user={user} />
     </div>
   );
