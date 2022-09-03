@@ -1,3 +1,4 @@
+import { useMediaQuery } from 'react-responsive';
 import { ArrowRight, Plus } from '../../../svg';
 import Story from './Story';
 import { stories } from '../../../utils/allMenuData';
@@ -5,6 +6,29 @@ import { stories } from '../../../utils/allMenuData';
 import './stories.css';
 
 export default function Stories() {
+  const query1175px = useMediaQuery({
+    query: '(max-width: 1175px)',
+  });
+  const query1030px = useMediaQuery({
+    query: '(max-width: 1030px)',
+  });
+  const query960px = useMediaQuery({
+    query: '(max-width: 960px)',
+  });
+  const query885px = useMediaQuery({
+    query: '(max-width: 885px)',
+  });
+  const max = query885px
+    ? 5
+    : query960px
+    ? 4
+    : query1030px
+    ? 5
+    : query1175px
+    ? 4
+    : stories.length;
+  console.log(max);
+
   return (
     <div className="stories">
       <div className="create_story_card">
@@ -19,7 +43,7 @@ export default function Stories() {
         <div className="story_create_text">Create Story</div>
       </div>
 
-      {stories.map((story) => (
+      {stories.slice(0, max).map((story) => (
         <Story story={story} key={story.id} />
       ))}
 
