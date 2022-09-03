@@ -13,7 +13,7 @@ const LeftHome = ({ user }) => {
   return (
     <div className="left_home scrollbar">
       <Link to="/profile" className="left_link hover1">
-        <img src={user?.picture} alt="user profile picture" />
+        <img src={user?.picture} alt={'user profile pic'} />
         <span>
           {user?.firstName} {user?.lastName}
         </span>

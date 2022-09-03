@@ -5,6 +5,7 @@ import RightHome from '../../components/home/right';
 import Stories from '../../components/home/stories';
 
 import './home.css';
+import CreatePost from '../../components/createPost';
 
 export default function Home() {
   const {
@@ -18,6 +19,7 @@ export default function Home() {
 
       <div className="home_middle">
         <Stories />
+        <CreatePost user={user} />
       </div>
 
       <RightHome user={user} />
