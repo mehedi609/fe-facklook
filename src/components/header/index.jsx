@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SearchMenu from './SearchMenu';
 import AllMenu from './AllMenu';
-import { useClickUserSide } from '../../utils/clickOutside';
+import { useClickUserSide } from 'utils/clickOutside';
 import UserMenu from './userMenu';
 import {
   ArrowDown,
@@ -17,7 +17,7 @@ import {
   Notifications,
   Search,
   Watch,
-} from '../../svg';
+} from 'svg';
 
 import './header.css';
 

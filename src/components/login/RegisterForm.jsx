@@ -6,11 +6,11 @@ import { useNavigate } from 'react-router-dom';
 import { MoonLoader } from 'react-spinners';
 import { useDispatch, useSelector } from 'react-redux';
 
-import RegisterInput from '../inputs/registerInput';
+import RegisterInput from 'components/inputs/registerInput';
 import DateOfBirthSelect from './DateOfBirthSelect';
 import GenderSelect from './GenderSelect';
-import { signUp } from '../../reducers/authSlice';
-import { STATUS } from '../../utils/requestStatus';
+import { signUp } from 'reducers/authSlice';
+import { STATUS } from 'utils/requestStatus';
 
 export default function RegisterForm({ setVisible }) {
   const userInfos = {

@@ -1,7 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
-import { ArrowRight, Plus } from '../../../svg';
+import { ArrowRight, Plus } from 'svg';
 import Story from './Story';
-import { stories } from '../../../utils/allMenuData';
+import { stories } from 'utils/allMenuData';
 
 import './stories.css';
 

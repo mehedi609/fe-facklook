@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { STATUS } from '../utils/requestStatus';
+import { STATUS } from 'utils/requestStatus';
 
 export const signUp = createAsyncThunk(
   'users/signUp',

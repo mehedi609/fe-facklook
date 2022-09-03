@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Return, Search } from '../../svg';
-import { useClickUserSide } from '../../utils/clickOutside';
+import { Return, Search } from 'svg';
+import { useClickUserSide } from 'utils/clickOutside';
 
 const SearchMenu = ({ color, setShowSearchMenu }) => {
   const [iconVisible, setIconVisible] = useState(true);

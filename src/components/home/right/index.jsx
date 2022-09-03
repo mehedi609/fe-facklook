@@ -1,4 +1,4 @@
-import { Dots, NewRoom, Search } from '../../../svg';
+import { Dots, NewRoom, Search } from 'svg';
 import Contact from './Contact';
 
 import './right-home.css';

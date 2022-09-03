@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { left } from '../../../utils/allMenuData';
+import { left } from 'utils/allMenuData';
 import LeftLink from './LeftLink';
-import { ArrowDown1 } from '../../../svg';
+import { ArrowDown1 } from 'svg';
 import Shortcut from './Shortcut';
 
 import './left-home.css';
