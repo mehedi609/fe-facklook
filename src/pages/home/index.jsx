@@ -1,11 +1,11 @@
-import Header from '../../components/header';
 import { useSelector } from 'react-redux';
-import LeftHome from '../../components/home/left';
-import RightHome from '../../components/home/right';
-import Stories from '../../components/home/stories';
+import Header from 'components/header';
+import LeftHome from 'components/home/left';
+import RightHome from 'components/home/right';
+import Stories from 'components/home/stories';
+import CreatePost from 'components/createPost';
 
 import './home.css';
-import CreatePost from '../../components/createPost';
 
 export default function Home() {
   const {

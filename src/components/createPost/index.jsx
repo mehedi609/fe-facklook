@@ -1,4 +1,4 @@
-import { Feeling, LiveVideo, Photo } from '../../svg';
+import { Feeling, LiveVideo, Photo } from 'svg';
 
 import './create-post.css';
 

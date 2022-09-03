@@ -8,7 +8,7 @@ import {
   professionsalMenus,
   shoppingMenus,
   socialMenus,
-} from '../../utils/allMenuData';
+} from 'utils/allMenuData';
 import AllMenuItem from './AllMenuItem';
 
 const AllMenu = () => {
