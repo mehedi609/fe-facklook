@@ -6,23 +6,25 @@ import Stories from 'components/home/stories';
 import CreatePost from 'components/createPost';
 
 import './home.css';
+import ResendEmailVerificationLink from '../../components/home/resendEmailVarification';
 
 export default function Home() {
-  const {
-    auth: { loggedInUser: user },
-  } = useSelector((state) => state);
+  const { auth } = useSelector((state) => state);
 
   return (
     <div className="home">
       <Header />
-      <LeftHome user={user} />
+      <LeftHome user={auth.loggedInUser} />
 
       <div className="home_middle">
         <Stories />
-        <CreatePost user={user} />
+        {!auth.loggedInUser.verified && (
+          <ResendEmailVerificationLink user={auth.loggedInUser} />
+        )}
+        <CreatePost user={auth.loggedInUser} />
       </div>
 
-      <RightHome user={user} />
+      <RightHome user={auth.loggedInUser} />
     </div>
   );
 }
