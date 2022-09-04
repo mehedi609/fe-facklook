@@ -27,7 +27,6 @@ export default function Stories() {
     : query1175px
     ? 4
     : stories.length;
-  console.log(max);
 
   return (
     <div className="stories">
